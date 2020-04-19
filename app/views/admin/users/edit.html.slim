@@ -1,0 +1,7 @@
+h1 ユーザの編集
+
+.nav.justify-content-end
+  = link_to '一覧', admin_users_path, class:'nav-link'
+
+/ 新規画面と同じなので、共通画面を利用。共通側のローカル変数へインスタンス変数を渡す。
+= render partial: 'form', locals: { user: @user }

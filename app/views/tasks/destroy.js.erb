@@ -1,0 +1,14 @@
+<%# 削除処理が行われた際のレスポンスボディを実行し、対象タスクを非表示にする %>
+document.querySelector("#task-<%= @task.id %>").style.display = 'none';
+
+<%# 直前のメッセージが残っている場合はメッセージを削除 %>
+var delmsg = document.getElementById('taskcountId');
+if(delmsg) {
+  delmsg.parentNode.removeChild(delmsg);
+}
+
+<%# 削除後の件数をタスク一覧テーブルの前に表示 %>
+var message = document.createElement('p');
+message.innerText = 'タスク「<%= @task.name %>」を削除しました。残りのタスクは<%= Task.count %>件です。';
+message.id = "taskcountId";
+document.querySelector('table').insertAdjacentElement('beforebegin', message);

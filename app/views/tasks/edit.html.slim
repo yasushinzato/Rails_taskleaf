@@ -1,0 +1,7 @@
+h1 タスクの編集
+
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+
+/ 編集画面と同じなので、共通画面を利用。共通側のローカル変数へインスタンス変数を渡す。
+= render partial: 'form', locals: { task: @task }

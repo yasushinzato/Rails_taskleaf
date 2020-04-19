@@ -1,0 +1,22 @@
+/ 新規画面と編集画面は同じ入力フォームのため共通化
+/ インスタンス変数@task は ローカル変数task へ渡される
+
+/ エラーメッセージ
+- if task.errors.present?
+  ul#error_explanation
+    - task.errors.full_messages.each do |message|
+      li= message
+
+/ 名前と詳細入力フォーム
+= form_with model: task, local: true do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'task_name'
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 5, class: 'form-control', id: 'task_description'
+  / 画像添付
+  .form-group
+    = f.label :image
+    = f.file_field :image, class: 'form-control'
+  = f.submit nil, class: 'btn btn-primary'
